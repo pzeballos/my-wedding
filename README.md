@@ -6,3 +6,6 @@ The project the following:
 - News
 - Choose music that would like to hear
 - Show maps to wedding/reception sites
+
+TODO:
+- Fix hacks with pictures
