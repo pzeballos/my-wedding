@@ -1,0 +1,11 @@
+# Ignore extensions
+*.pyc
+*.swp
+*.swo
+
+# Virtualenv folder
+/venv
+
+# OS and Editor folders and files
+.DS_Store
+Thumbs.db
