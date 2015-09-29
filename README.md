@@ -1,6 +1,6 @@
 # My-wedding
-A simple little django website for my wedding. This mainly served as a learning project for Django.
-The project the following:
+A simple little django website for my wedding (2010). This mainly served as a learning project for Django.
+The project support the following:
 - Guests can rsvp to wedding
 - Select seating options
 - News
