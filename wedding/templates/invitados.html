@@ -1,0 +1,40 @@
+{% extends "restricted.html" %}
+
+{% block content %}
+
+<img src="http://chart.apis.google.com/chart?cht=p3&chd=t:{{ participados }},{{noconfirmados}},{{novienen}},{{vienen}}&chs=550x100&chl=Participados ({{nparticipados}})|No confirmados ({{nnoconfirmados}})|No vienen ({{nnovienen}})|Vienen ({{nvienen}})&chco=404040|0000A0|00A000|A00000">
+
+<h1>Listado de invitados</h1>
+<table>
+<thead>
+<tr><th>Nombre completo</th><th>Invitado</th><th>Viene</th><th>Paga</th></tr>
+</thead>
+<tbody>
+{% for g in guests %}
+<tr>
+<td style="padding:0 20px"><a href="/admin/wedding/guest/{{ g.id }}/">
+                          {% if g.code.sent_rsvp and not g.is_coming %}<del>{% endif %}
+                          {{ g.full_name }}
+                          {% if g.code.sent_rsvp and not g.is_coming %}</del>{% endif %}
+                          </a></td>
+<td style="padding:0 20px">
+  {% if g.invited_to_party %}
+  <a href="/admin/wedding/code/{{ g.code.id }}/" style="color:green">
+    {% if g.code.dinner %}
+    Si
+    {% else %}
+    Pos-1
+    {% endif %}
+  </a>
+
+  {%else%}
+  <a href="/admin/wedding/code/{{ g.code.id }}/" style="color:red">No</a>
+  {% endif %}
+</td>
+<td>{% if g.code.sent_rsvp %}{% if g.is_coming %}Sí{% else %}No{%endif%}{% else %}{% if g.invited_to_party %}No sé{%else%}No{%endif%}{%endif%}</td>
+<td><span {% if g.code.pays %} style="color:green">Sí{% else %} style="color:red">No{%endif%}</span></td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}

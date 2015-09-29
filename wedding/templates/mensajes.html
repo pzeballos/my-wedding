@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if spanish %}
+<h1>&iexcl;Dejanos un mensaje!</h1>
+{% if submitted %}<div class="info">Recibimos tu mensaje.</div>{% endif %}
+<div class="msgform">
+<form action="" method="POST">
+<div class="encabezado"><small>(No hay formato de ningún tipo.  Todo sale de corrido.)</small></div>
+<div class="body">
+<div class="field"><textarea name="body"></textarea></div>
+<div class="field"><label for="public">
+ <input type="checkbox" name="public" id="public"/> Este es un mensaje
+ público (permite que todos puedan leer este mensaje)
+</label>
+</div>
+<div class="centered"><input type="submit" value="Enviar"/></div>
+</div>
+</form>
+</div>
+
+{% if msgs %}
+<h1>Mensajes Públicos</h1>
+{% endif %}
+{% else %}
+<h1>Leave a message!</h1>
+{% if submitted %}<div class="info">We received your message.</div>{% endif %}
+<div class="msgform">
+<form action="" method="POST">
+<div class="encabezado"><small>(No formatting available.  Not even line breaks.)</small></div>
+<div class="body">
+<textarea name="body"></textarea>
+<div><label for="public">
+ <input type="checkbox" name="public" id="public"/> This is a public
+ message (allow everyone to read it)
+</label>
+</div></div>
+<div class="centered"><input type="submit" value="Send"/></div>
+</form>
+</div>
+
+{% if msgs %}
+<h1>Public Messages</h1>
+{% endif %}
+
+{% endif %}
+
+{% if msgs %}
+{% for msg in msgs %}
+<div class="msg">
+  <div class="encabezado">
+  {% if msg.timestampstr%}
+    <div class="delete timestamp">
+    {{ msg.timestampstr }}
+    </div>
+  {% endif %}
+  {% if msg.own %}
+    <div class="delete">
+    <a href="/{{lang}}/mensajes/delete/{{msg.id}}">
+    {% if spanish %}Borrar{% else %}Delete{% endif %}</a>
+    </div>
+  {% endif %}
+ {{msg.localTo}}
+</div>
+<div class="body">{{ msg.msg }}</div>
+</div>
+{% endfor %}
+{% endif %}
+
+{% endblock %}
+

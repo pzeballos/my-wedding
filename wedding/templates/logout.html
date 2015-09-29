@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if spanish %}
+<h1>Adiós</h1>
+<p>¡Nos vemos!.  Podés volver a entrar por la <a href="/es/index">página de inicio</a></p>
+
+{% else %}
+
+<h1>Good Bye</h1>
+<p>You have been logged out.  You can sign back in by going to the <a href="/en/index">front page</a></p>
+
+{% endif %}
+
+{% endblock %}
+

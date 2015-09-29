@@ -1,0 +1,23 @@
+{% extends "restricted.html" %}
+
+{% block content %}
+{% if msg %}
+<div class="info">{{msg}}</div>
+{% endif %}
+{% if confirm %}
+<h1>{{title}}: ${{price}}</h1>
+<form action="" method="get">
+<img style="float:left" src="{{fotitourl}}"/>
+<input type="hidden" name="prezzie_id" value="{{garbid}}"/>
+<input type="hidden" name="confirm" value="1"/>
+<input style="margin:30px;padding:5px 20px" type="submit" value="Confirmar"/>
+</form>
+
+{% else %}
+<h1>Agregar un regalo</h1>
+<form action="" method="get">
+ID de Garbarino: <input type="text" name="prezzie_id"/>
+<input type="submit" value="Agregar!"/>
+</form>
+{% endif %}
+{% endblock %}

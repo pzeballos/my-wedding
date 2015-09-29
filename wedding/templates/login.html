@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if spanish %}
+<h1>&iexcl;Hola!</h1>
+<p>Teniendo bastante tiempo para preparar nuestro casamiento, armamos este sitio.
+</p>
+<p>
+Antes que nada, por favor ingresá el código que vino en tu tarjeta, así sabemos
+con quién estamos hablando.
+</p>
+
+{% if mismatch %}<div class="error">El código que ingresaste no coincide con ninguno de los que tenemos en nuestra lista.  Por favor revisá de vuelta, y volvé a ingresarlo. </div>{% endif %}
+{% if required %}<div class="error">Tenés que ingresar el código para entrar!</div>{% endif %}
+{% if unauthorized %}<div class="error">Para acceder a esa página tenés que ingresar tu código</div>{% endif %}
+{% if blocked %}<div class="error">Has ingresado mal tu código demasiadas veces, así que tu máquina ha sido bloqueada.  Mejor llamanos, o mandanos un mail, y te damos una mano.</div>{% endif %}
+{% else %}
+<h1>Hello!</h1>
+<p>Having quite some time to prepare our weddding, we built this website.
+</p>
+<p>
+Before anything, please enter the code you received with your card, so
+we know who we're talking to.
+</p>
+{% if mismatch %}<div class="error">The code you entered doesn't match any code from our list.  Please check again and re-enter your code.</div>{% endif %}
+{% if required %}<div class="error">You must enter your code to enter!</div>{% endif %}
+{% if unauthorized %}<div class="error">To access that page you must enter your code.</div>{% endif %}
+{% if blocked %}<div class="error">You've entered your code incorrectly too many times, so we've banned your IP.  Please phone us or send us a mail, and we can give you a hand signing in.</div>{% endif %}
+
+{% endif %}
+
+<div id="loginbox">
+<form action="" method="POST">
+<div><input type="password" size="10" name="code" id="code"/></div>
+<div><input type="submit" name="signin" value="{% if spanish %}Entrar{% else %}Enter{% endif %}" id="signin"/></div>
+{% if next %}
+<input type="hidden" name="goto" value="{{next}}"/>
+{% endif %}
+</form>
+</div>
+
+{% endblock %}
+

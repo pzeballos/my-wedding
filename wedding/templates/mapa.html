@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+
+{% if spanish %}
+<h1>Cómo llegar</h1>
+<p>En este mapa se muestra cómo llegar al salón desde la iglesia (en auto).</p>
+
+    <div id="map" style="width: 560px; height: 1030px; float:left;">
+		<iframe width="550" height="1024" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps/ms?ie=UTF8&amp;hl=en&amp;t=h&amp;msa=0&amp;msid=105627920754559109236.00048bda8ec4ebdab0023&amp;ll=-31.439795,-64.185905&amp;spn=0.037494,0.021501&amp;z=15&amp;output=embed"></iframe><br />
+    </div>
+    
+    <div id="checkboxes">
+    <h3>Referencias:</h3>
+		<ul id="referenciasList">
+			<li style="background-image:url(/static/images/icon_church.png);background-repeat:no-repeat;background-position:left center;"> Iglesia.</li>
+			<li style="background-image:url(/static/images/icon_recorrido1.png);background-repeat:no-repeat;background-position:left center;"> Recorrido desde la Iglesia a la Entrada del Jockey.</li>
+			<li style="background-image:url(/static/images/icon_entrada.png);background-repeat:no-repeat;background-position:left center;"> Entrada al Jockey Club.</li>
+			<li style="background-image:url(/static/images/icon_recorrido2.png);background-repeat:no-repeat;background-position:left center;"> Recorrido interno del Jockey: desde la entrada al Salón.</li>
+			<li style="background-image:url(/static/images/icon_parking.png);background-repeat:no-repeat;background-position:left center;"> Estacionamiento.</li>
+			<li style="background-image:url(/static/images/icon_salon.png);background-repeat:no-repeat;background-position:left center;"> Sal&oacute;n.</li>
+		</ul>
+    </div>
+
+
+<div id="explanation">
+<p>Para aquellos que les interese... además de ir en auto (sea uno particular o un taxi/remis), 
+también los llevan al salón los colectivos A4 y A9, y el diferencial D5. Todos se toman en la 
+Av. Hipólito Yrigoyen y los dejan en la puerta de la entrada al Jockey.
+ </p> 
+</div>
+
+<p>Podés volver a la <a href="/es/index">página de inicio</a></p>
+
+{% else %}
+
+<h1>How to get to the church</h1>
+<p>In this map you can see how to get from the church to the reception hall.
+
+    <div id="map" style="width: 560px; height: 1030px; float:left;">
+		<iframe width="550" height="1024" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps/ms?ie=UTF8&amp;hl=en&amp;t=h&amp;msa=0&amp;msid=105627920754559109236.00048bda8ec4ebdab0023&amp;ll=-31.439795,-64.185905&amp;spn=0.037494,0.021501&amp;z=15&amp;output=embed"></iframe><br />
+    </div>
+    
+    <div id="checkboxes">
+    <h3>Referencias:</h3>
+		<ul id="referenciasList">
+			<li style="background-image:url(/static/images/icon_church.png);background-repeat:no-repeat;background-position:left center;"> Church.</li>
+			<li style="background-image:url(/static/images/icon_recorrido1.png);background-repeat:no-repeat;background-position:left center;"> Car path from church to reception.</li>
+			<li style="background-image:url(/static/images/icon_entrada.png);background-repeat:no-repeat;background-position:left center;"> Entrance to the reception hall.</li>
+			<li style="background-image:url(/static/images/icon_recorrido2.png);background-repeat:no-repeat;background-position:left center;"> Path within the reception hall facilties from its entrance</li>
+			<li style="background-image:url(/static/images/icon_parking.png);background-repeat:no-repeat;background-position:left center;"> Parking.</li>
+			<li style="background-image:url(/static/images/icon_salon.png);background-repeat:no-repeat;background-position:left center;"> Reception hall.</li>
+		</ul>
+    </div>
+
+
+<div id="explanation">
+<p>Just in case you are interested and you're not planning on going by car (or a cab) you can take any of the
+ following bus lines: A4, A9 and D5. All of them you can take in Hipólito Irigoyen Avenue (half a block from
+ the church) and will leave you at the hall's entrance.
+ </p> 
+</div>
+
+<p>You can go back to the <a href="/en/index">main page</a></p>
+
+{% endif %}
+
+{% endblock %}
+

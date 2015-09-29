@@ -1,0 +1,455 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    /*background: #7CB79C;*/
+    background: url(/static/images/general_bgimg.jpg) right repeat;
+    color: #292929;
+    /*color: #333333;*/
+    font-family: "trebuchet MS",Arial,Verdana,sans-serif;
+}
+
+#topleftcorner {
+    background: url(/static/images/topleftcorner.png) top left no-repeat;
+    height: 25px;
+    width: 199px;
+}
+#bottomleftcorner {
+    background: url(/static/images/bottomleftcorner.png) top left no-repeat;
+    height: 10px;
+    width:800px;
+    margin: auto;
+}
+.wide #bottomleftcorner {
+    width:1100px;
+}
+
+a img {
+    border: 0;
+}
+
+#content h1 {
+    clear:both;
+    background: #684639;
+    color: white;
+    padding: 2px 0 2px 20px;
+    margin-bottom: 10px;
+}
+
+#content a {color: #000;}
+#content a:visited {color: #333;}
+
+#content p {margin: 10px 0;}
+
+#content h3 {color: #471500;}
+
+#content dt {padding: 5px;}
+#content dd {padding: 0 0 0 40px;}
+
+#sidebar-left {
+    float:left;
+    width:180px;
+    padding: 30px 0 0 0;
+}
+#leftnav, #leftnav a, #leftnav a:visited, #leftnav a:active {
+    padding-left: 10px;
+    color: white;
+    text-decoration: none;
+}
+#leftnav a:hover {
+    background: #aaa;
+}
+#leftnav a {
+    display: block;
+    width: 160px;
+}
+
+div#leftnav .logout {
+    margin-top:40px;
+    text-align: right;
+}
+
+#leftnav li {
+    list-style-image: none;
+    list-style-type: none;
+    background: url(/static/images/line.gif) repeat-x center bottom;
+    font-size: 12px;
+    margin-top: 10px;
+    line-height: 20px;
+    padding-bottom: 1px;
+}
+
+#main {
+    float:left;
+    width:550px;
+    padding: 10px 20px 30px 10px;
+    margin: 20px 0 0 30px;
+    border-top: 1px solid black;
+}
+
+.wide #main {
+    width: 850px;
+}
+
+#page {
+    background: url(/static/images/bg_main.png);
+    width:800px;
+    margin: 5px auto 0;
+}
+.wide #page {
+    width:1100px;
+}
+
+#name-and-slogan {
+    height: 230px;
+    background: url(/static/images/header.png);
+}
+
+#name-and-slogan span {
+    display:block;
+    padding: 30px 35px;
+}
+#name-and-slogan span h1{
+    font-family: sans-serif;
+    font-size: 26px;
+}
+
+#footer {
+    margin: 5px 10px 0 210px;
+    border-top: 1px solid #333;
+    padding: 4px;
+    text-align: center;
+    clear: both;
+    width: 572px;
+}
+
+.wide #footer {
+    width: 872px;
+}
+
+a.feed-icon {
+    display:block;
+    float:right;
+}
+
+#mission {
+    background:#E5DBC2;
+    border: 1px solid #BA9;
+    font-size: smaller;
+    padding: 5px 5px 5px 30px;
+}
+
+.info {
+    background: #bdb;
+    border: 1px solid green;
+    padding: 5px 15px;
+    margin: 10px;
+}
+.error {
+    background: #dbb;
+    border: 1px solid #980a0a;
+    padding: 5px 15px;
+    margin: 10px;
+}
+.warning {
+    background: #eeb;
+    border: 1px solid yellow;
+    padding: 5px 15px;
+    margin: 10px;
+}
+
+div#switchlang {
+/*    float: right;*/
+    text-align: center;
+    margin: 5px;
+}
+div#switchlang a {
+    margin: 0 5px;
+}
+
+fieldset {
+    padding: 10px;
+    margin: 20px 10px;
+}
+
+#nametag {
+    color: #222;
+    font-weight: bold;
+/*    float: left; */
+    margin-bottom: 10px;
+}
+
+/* Login box */
+#loginbox {
+/*    background: white;*/
+    height: 80px;
+    width: 340px;
+    margin: 20px auto;
+    padding: 15px;
+    text-align: center;
+}
+#loginbox input#code {
+    font-family: Courier;
+    font-weight: bold;
+    font-size:26px;
+    width: 240px;
+    margin-bottom: 10px;
+}
+#loginbox input#signin {
+    font-size:20px;
+    padding: 5px 20px;
+}
+
+pre, pre.tarjeta {
+    background: #eee;
+    border: 1px solid gray;
+    margin: 0 30px 15px;
+    padding: 10px;
+    width: 480px;
+}
+
+.asmListItemLabel {
+    background: #a8a78d;
+}
+.asmListItemRemove {
+    text-transform: uppercase;
+    font-size: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.marker {
+    font-size: 14px;
+    margin: 0 10px 10px;
+}
+table td {
+    vertical-align: top;
+}
+div#explanation {
+    padding: 10px;
+    clear:left;
+}
+div#explanation ol {padding: 5px 0 0 25px;}
+div#explanation ol li {margin-bottom: 5px;}
+
+div#checkboxes {
+    width: 255px;
+    height: 410px;
+    padding: 10px;
+    float:right;
+}
+
+div.notice {
+    border: 1px solid gray;
+    padding: 10px;
+    background: #C5BBA2;
+}
+
+#leftnav a.send_rsvp {
+    background: #980a0a;
+    border: 1px solid gray;
+}
+
+/* Fotos del salon */
+.foto {
+    background: white;
+    padding: 5px;
+    border: 1px solid black;
+    margin: 10px auto;
+}
+
+fieldset.menubox {
+    width: 480px;
+}
+
+/* Mensajes */
+.msg {
+    width: 500px;
+    border: 1px solid #A8A78D;
+    background: #F0F0D0;
+    margin: 5px 0 15px 0;
+}
+.msg .encabezado {
+    padding:3px;
+    background: #E0E0C0;
+}
+.msg .body, .msgform .body {
+    padding: 6px;
+}
+
+.msg .delete {
+    float:right;
+    border-left: 1px solid #A8A78D;
+    padding: 0 15px;
+    height: 20px;
+}
+.msg .delete a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: smaller;
+}
+
+.msgform {
+    width: 500px;
+    margin: 5px 0 15px 0;
+}
+.msgform .encabezado {
+    padding:3px;
+}
+
+.msgform textarea {
+    width: 482px;
+    height: 150px;
+}
+.msgform .centered {
+    text-align: center;
+}
+.msgform .centered input {
+    width: 90px;
+}
+.msgform .field {
+    margin-bottom:10px;
+}
+/* Musica */
+.music {
+    width: 547px;
+    border: 1px solid #A8A78D;
+    background: #F0F0D0;
+    margin: 3px 0;
+    height: 40px;
+    float: left;
+    position: relative;
+}
+.music .body {
+    padding: 0 0 0 10px;
+    float: left;
+    width:430px;
+    overflow: hidden;
+    height: 40px;
+}
+
+.music .arrows, .music .rank {
+    width: 40px;
+    float: left;
+    text-align: center;
+    border-right: 1px solid #A8A78D;
+    height: 40px;
+}
+
+.music .rank {
+    font-size: xx-large;
+    width: 60px;
+}
+
+.music .arrow {
+    display: block;
+    height: 10px;
+    margin: 5px 5px 10px;
+}
+
+.arrowimg {
+    float:left;
+}
+
+
+#content .fitted p {
+    margin: 0;
+}
+
+img.spinner {
+    margin: 4px;
+}
+
+div.regalo {
+    width: 408px;
+    height: 110px;
+    float: left;
+    border: 1px solid #A8A78D;
+    background: #F0F0D0;
+    margin: 5px 0 15px 10px;
+}
+
+div.regalo .encabezado {
+    padding: 10px 10px 0;
+    height:65px;
+    border-right: 1px solid #A8A78D;
+    width: 276px;
+    text-align: right;
+}
+
+div.regalo .body {
+    float:left;
+    border-top: 1px solid #A8A78D;
+    width:107px;
+    background: #E0E0C0;
+    text-align: right;
+    height: 26px;
+    padding: 4px 5px;
+}
+
+div.regalo .button {
+    float:left;
+    width:168px;
+    border:1px solid #A8A78D;
+    text-align: left;
+    height: 26px;
+    padding: 4px 5px;
+}
+div.regalo .button input {
+    padding: 0 10px;
+}
+
+div.regalo .fotito {
+    float: right;
+    background: white url(/static/images/no_photo.png) center center;
+    height: 100px;
+    width: 100px;
+    padding:2px;
+    border: 1px solid black;
+    margin: 2px;
+}
+
+ol.regalos li{
+    margin:40px;
+}
+
+div.timestamp {
+    float: right
+}
+
+div.pago {
+    width: 547px;
+    height: 40px;
+    background: #fdd;
+    margin: auto;
+    border: 1px solid #ecc;
+    padding: 10px;
+}
+
+div.novedad {
+    border-bottom: 1px solid gray;
+    padding: 15px;
+    
+}
+
+div.timestamp {
+    font-size: smaller;
+}
+
+
+ul.menuList {
+	padding-left:60px;
+}
+
+ul#referenciasList {
+	padding-left:10px;
+}
+
+ul#referenciasList li {
+	list-style:none outside none;
+	padding-left:40px;
+	padding-top:5px;
+}
+

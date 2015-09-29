@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Toote y Pol</title>
+    <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon" />
+    <script type="text/javascript" src="/static/js/jquery-1.3.1.min.js"></script>
+<style>
+.digit {
+    font-size: 120px;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: bottom;
+}
+.legend {
+    font-size: 30px;
+    text-align: center;
+}
+</style>
+<script type="text/javascript">
+<!--
+
+function updateSize() {
+    var target = $(window).width() * 0.95;
+    
+    fontSize = $('.digit').css('font-size');
+    fontSize = parseInt(fontSize.substring(0, fontSize.length - 2));
+    while ($('#clock').width() > target) {
+        fontSize -= 1;
+        $('.digit').css('font-size', fontSize + 'px');
+        $('.legend').css('font-size', Math.floor(fontSize / 4) + 'px');
+    }
+    while ($('#clock').width() < target) {
+        fontSize += 1;
+        $('.digit').css('font-size', fontSize + 'px');
+        $('.legend').css('font-size', Math.floor(fontSize / 4) + 'px');
+    }
+    $('.digit').height($(window).height() * .6);
+}
+
+function zeroPad(num)
+{
+    return (num < 10 ? '0' : '') + num;
+}
+
+function updateTime() {
+    var delta = new Date({{ original }}) - new Date();
+    delta = Math.floor(delta / 1000);
+    var secs = delta % 60;
+    delta = Math.floor(delta / 60);
+    var mins = delta % 60;
+    delta = Math.floor(delta / 60);
+    var hours = delta % 24;
+    var days = Math.floor(delta / 24);
+    document.getElementById('days').innerHTML = days;
+    document.getElementById('hours').innerHTML = zeroPad(hours);
+    document.getElementById('mins').innerHTML = zeroPad(mins);
+    document.getElementById('secs').innerHTML = zeroPad(secs);
+}
+
+$(document).ready(function () {
+    updateTime();
+    setInterval (updateTime, 1000);
+    updateSize();
+    $(window).resize(updateSize);
+});
+//-->
+</script>
+
+</head>
+<body>
+<table id="clock">
+    <tr>
+        <td id="days" class="digit">{{days}}</td><td class="digit">:</td>
+        <td id="hours" class="digit">{{hours}}</td><td class="digit">:</td>
+        <td id="mins" class="digit">{{mins}}</td><td class="digit">:</td>
+        <td id="secs" class="digit">{{secs}}</td>
+    </tr>
+    <tr>
+        <td class="legend">Días</td><td>&nbsp;</td>
+        <td class="legend">Horas</td><td>&nbsp;</td>
+        <td class="legend">Minutos</td><td>&nbsp;</td>
+        <td class="legend">Segundos</td>
+    </tr>
+</table>
+</body>
+</html>

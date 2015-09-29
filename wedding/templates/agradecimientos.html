@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if spanish %}
+<h1>Agradecimientos</h1>
+<p>Si bien hay muchos a quien agradecer, éstos son los que nos entraron en esta página:</p>
+
+<ul class="menuList">
+<li><p>A <strong>nuestras familias</strong> por el apoyo y aguante</p></li>
+<li><p>A <strong>Marcos Dione</strong> por las fotos que usamos de fondo en estas páginas</p></li>
+<li><p>A <strong>las chicas</strong> que invadieron el departamento y lo llenaron de olor a fana haciendo el cotillón para la fiesta</p></li>
+</ul>
+
+
+{% else %}
+
+<h1>Gratitude</h1>
+<p>There is a lot of people we would like to thank, these are the ones that fit into this page:</p>
+
+<ul class="menuList">
+<li><p>To <strong>our families</strong> for support and caring</p></li>
+<li><p>To <strong>Marcos Dione</strong> for the pictures we used as backgrounds in these pages</p></li>
+<li><p>To <strong>the girls</strong> that raided the apartment and made it stink of glue while making all the props for the party</p></li>
+</ul>
+
+{% endif %}
+
+
+
+{% endblock %}
+

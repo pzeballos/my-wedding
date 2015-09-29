@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if spanish %}
+
+<h1>Datos importantes</h1>
+
+{% if pays %}
+<div class="error">
+Al final el valor de la tarjeta va a ser de <b>$ {{ how_much }}</b>
+{% if dinner %}
+   por persona mayor a 13 años (<a href="/es/mensajes">consultarnos</a> para el caso de los menores).  
+{% else %}
+   después de la 1 de la mañana (diríamos "después de 12" pero nos casamos tarde así que es después de 1).
+{% endif %}
+
+Podés ver distintas formas de acercarnos la plata <a href="/es/pago"/>acá</a>. Gracias!</div>
+{% endif %}
+
+<p>Por si perdiste la tarjeta, acá te pasamos la información general sobre el
+casamiento.</p>
+
+<p>El servicio religioso es el <b>Sábado 25 de Septiembre de 2010</b> a las 22 horas en la:</p>
+<pre class="tarjeta">Iglesia del Sagrado Coraz&oacute;n de la Orden de los Padres Capuchinos.
+Buenos Aires 693 
+(intersección con Obispo Oro - Nva C&oacute;rdoba)
+Córdoba (Argentina)
+</pre>
+
+<p>La ceremonia va a arrancar puntualmente a las <big>22 horas</big>.</p>
+
+{% if invited_to_party %}
+  {% if dinner %}
+<p>Después de la iglesia, tambi&eacute;n est&aacute;n invitados a la fiesta.  
+  {% else %}
+<p>Los esperamos en la fiesta después de la 1 de la mañana.
+  {% endif %}
+
+La misma será en el:
+</p>
+
+<pre class="tarjeta">Club House H&iacute;pico del Jockey Club
+Avda. Valpara&iacute;so 3589 - Bº Jard&iacute;n.
+web: <a href="http://www.hipicojc.com.ar/">http://www.hipicojc.com.ar/</a>
+Córdoba (Argentina)
+</pre>
+
+{% if dinner %}
+<p>En el sal&oacute;n se llevar&aacute; a cabo la ceremonia civil la cual comienza puntualmente a las <big>23:30hs</big>.</p>
+<p>El sal&oacute;n ya los estar&aacute; esperando con la recepci&oacute;n lista, porque de seguro estar&aacute;n con hambre</p>
+{% endif %}
+
+{% if has_extras %}
+<div class="error">
+Lamentablemente no podemos ni invitar ni pagar por todos quienes nos hubiese gustado. Esto implica que tal vez quieras venir con alguien más que no está invitado. Hablá con nosotros al respecto o dejanos un mensaje con una forma de contactarnos con vos y vamos a intentar corregirlo.
+</div>
+<br style="clear:both"/>
+{% endif %}
+
+{% endif %}
+
+{% else %}
+
+<h1>Important information</h1>
+
+<p>For if you've lost your invitation, here's the general information
+about our wedding.
+</p>
+
+<p>The church service will be held on <b>Saturday September 25th, 2010</b> at:</p>
+<pre class="tarjeta">Iglesia del Sagrado Coraz&oacute;n de la Orden de los Padres Capuchinos.
+Buenos Aires 693 
+(intersección con Obispo Oro - Nva C&oacute;rdoba)
+Córdoba (Argentina)
+</pre>
+
+<p>The wedding will start (<u>punctually</u>) at <big>22 PM</big>.</p>
+
+{% if invited_to_party %}
+  {% if dinner %}
+<p>After the service, you're also invited to the party:</p>
+  {% else %}
+<p>We hope you can join us around 1am (after dinner) at the party:</p>
+  {% endif %}
+
+<pre class="tarjeta">Club House H&iacute;pico del Jockey Club
+Avda. Valpara&iacute;so 3589 - Bº Jard&iacute;n.
+web: <a href="http://www.hipicojc.com.ar/">http://www.hipicojc.com.ar/</a>
+Córdoba (Argentina)
+</pre>
+
+{% if dinner %}
+<p>Civil marriage will take place during the reception, starting at <big>23:30 hs</big> sharp.</p>
+<p>You will be received with appetizers already as you will surely be hungry.</p>
+{% endif%}
+
+{% endif %}
+
+{% endif %}
+
+{% endblock %}
+

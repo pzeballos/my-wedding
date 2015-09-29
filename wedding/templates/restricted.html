@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Pol Y Toote</title>
+    <link href="/static/style.css" rel="stylesheet" type="text/css" media="screen" />
+{% block extraheaders %}{% endblock %}
+</head>
+<body {% block bodytags %}{% endblock %}>
+<div id="page">
+    <div id="name-and-slogan"><span><h1>Paula y Mat&iacute;as</h1></span></div>
+    <div id="sidebar-left"><div id="leftnav">
+    <ul id="navigation" class="logout">
+    <li><a href="/es/logout">Cerrar Sesión</a></li>
+    </ul>
+    </div>
+    </div>
+    <div id="main">
+        <div id="nametag">{{ nametag }}</div>
+        <div id="content">
+{% block content %}blabla{% endblock %}
+        </div>
+    </div>
+    <div id="footer">
+     Paula (351-3017910) {% if spanish %}y{% else %}and {%endif%} Mat&iacute;as (351-6422930)<br>
+      Copyright 2010
+    </div>
+</div>
+</body>
+</html>

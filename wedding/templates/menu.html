@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if spanish %}
+<h1>Personalizar el menú</h1>
+{% if saved %}<div class="info">Recibimos sus datos.</div>{% endif %}
+<p>La recepción consistirá de:
+<ul class="menuList">
+	<li>Brusquetas con cremas de hierbas</li>
+	<li>Crostines con pastas de olivas negras</li>
+	<li>Tarteletas con mouse de camarones</li>
+	<li>Empanaditas Criollas, Árabes y de Jamón y Queso</li>
+	<li>Cañoncitos de Roquefort</li>
+	<li>Minibrochettes de lomo y pollo</li>
+</ul>
+</p>
+
+<p>Además habrá una tabla de Campo que incluye: 
+<ul class="menuList">
+	<li>Salame de la Colina</li>
+	<li>Quesillo de Cabra</li>
+	<li>Jamón Crudo</li>
+	<li>Jamón Cocido</li>
+	<li>Roquefort con Hierbas</li>
+	<li>Queso Gruyere</li>
+</ul>
+</p>
+
+<p>El plato principal será carré de cerdo con mil hojas de papas, espárragos con salsa de puerro y hongos o mostaza.</p>
+
+<p>Si algo de esto no te gusta, avisanos y veremos si podemos arreglar algo distinto.</p>
+{% if not sent_rsvp %}<div class="error">Todavía no has <a href="/es/rsvp">confirmado tu asistencia</a>.  Por favor hacé eso antes de personalizar el menú.</div>{% endif %}
+{% if some_missing %}<div class="warning">Parece que al menos uno de los que aparecen en la tarjeta no viene a la fiesta. Si pensaba venir, antes de poder personalizar su menú tiene que <a href="/es/rsvp">avisarnos acá</a>.</div>{% endif %}
+<form action="" method="POST">
+{% for g in guests %}
+<fieldset class="menubox"><legend>{{ g.nick }}</legend>
+<p>Prefiero un menú vegetariano    <input type="checkbox" name="is_vegetarian_{{ g.id }}" {% if g.is_vegetarian %}checked{% endif %} /></p>
+<p>    Otros comentarios: <br/><textarea rows="5" cols="40" name="other_notes_{{ g.id }}">{{ g.other_notes}}</textarea></p>
+</fieldset>
+{% endfor %}
+
+{% if sent_rsvp %}
+<br/>
+<input type="submit" value="Estas son nuestras preferencias" />
+{% endif %}
+</form>
+<p>Podés volver a la <a href="/es/index">página de inicio</a></p>
+
+{% else %}
+
+<h1>Customize your menu</h1>
+
+{% if saved %}<div class="info">We've received your preferences.</div>{% endif %}
+<p>There will be lots of appetizers during reception. We are too lazy to translate them all so we suggest you check the spanish version of the page for more details ;).</p>
+
+<p>For dinner we're going to serve pork, let us know if there something we can do to accomodate your dietary needs.</p>
+
+{% if not sent_rsvp %}<div class="error">You haven't yet <a href="/en/rsvp">confirmed if you're coming</a>.  Please do that before customizing your menu.</div>{% endif %}
+{% if some_missing %}<div class="warning">It seems that at least one of those on the invitation is not coming to the party.  If you are planning on coming to the party in the end, please <a href="/en/rsvp">confirm you are coming</a> before choosing who you'd like to sit with.</div>{% endif %}
+<form action="" method="POST">
+{% for g in guests %}
+<fieldset class="menubox"><legend>{{ g.nick }}</legend>
+<p>I'd prefer a vegetarian menu.    <input type="checkbox" name="is_vegetarian_{{ g.id }}" {% if g.is_vegetarian %}checked{% endif %} /></p>
+<p>    Other comments: <br/><textarea rows="5" cols="40" name="other_notes_{{ g.id }}">{{ g.other_notes}}</textarea></p>
+</fieldset>
+{% endfor %}
+
+{% if sent_rsvp %}
+<br/>
+<input type="submit" value="These are our preferences" />
+{% endif %}
+</form>
+{% endif %}
+
+{% endblock %}
+

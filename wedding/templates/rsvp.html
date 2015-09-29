@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block extraheaders %}
+    <script type="text/javascript">
+     $(document).ready(function(){
+        function updateForm() {
+            var n = $(":radio:checked").attr('value');
+            if (n == 'complicated') {
+                $("div#details").show();
+            }
+            else {
+                $("div#details").hide();
+            }
+        }
+        $(":radio").click(updateForm);
+        updateForm();
+     });
+    </script>
+{% endblock %}
+
+{% block content %}
+
+{% if spanish %}
+<h1>Confirmar asistencia</h1>
+{% if saved %}<div class="info">Recibimos tu confirmación.  Gracias!</div>{% endif %}
+{% if edited %}<div class="info">Recibimos tus modificaciones.  Gracias por avisar!</div>{% endif %}
+<p>Nos encantaría compartir este momento con ustedes.</p>
+<p>Es bastante importante que sepamos si piensan venir o no cuanto antes, como para poder ir planeando otros detalles de la boda.
+<strong>Tienen tiempo para confirmar hasta el 1º de Septiembre.</strong></p>
+<form action="" method="POST">
+<p>    <input type="radio" name="confirm" {% if all %}checked{% endif %} value="yes" id="confirm_yes"/>
+<label for="confirm_yes">Sí, {% if multiple %}vamos los {{ amount }}{% else %}vamos{% endif %}.</label></p>
+<p>    <input type="radio" name="confirm" {% if none %}checked{% endif %} value="no" id="confirm_no"/>
+<label for="confirm_no">No, no vamos.</label></p>
+{% if multiple %}
+<p>    <input type="radio" name="confirm" {% if some %}checked{% endif %} value="complicated" id="confirm_complicated"/>
+<label for="confirm_complicated">Es más complicado (no vamos todos, pero alguno sí va).</label></p>
+<div id="details"><p>Marcá con una cruz los que <b>sí</b> vienen:</p>
+{% for guest in guests %}
+<p>    <input type="checkbox" name="confirm_{{ guest.id }}" {% if guest.is_coming %}checked{% endif %} /> {{ guest.full_name }}</p>
+{% endfor %}
+</div>
+{% endif %}
+<input type="submit" value="Enviar Confirmación" />
+</form>
+<br><br>
+
+<h3>Vestimenta</h3>
+<p>Al considerarse una fiesta de casamiento, nos gustaría que estén acordes al evento con una vestimenta formal. Es decir ... zapatillas y/o jeans <u>no</u> entran en esta categoría.
+</p>
+<p>En el caso de las mujeres, si optan por usar una falda, ya sea un vestido o una pollera, que no sea cortita ... las minifaldas la pueden usar para salir a bailar cualquier finde.
+</p>
+<p>¡Gracias!</p>
+
+{% else %}
+
+<h1>Confirm your presence</h1>
+{% if saved %}<div class="info">We've received your confirmation.  Thank you!</div>{% endif %}
+{% if edited %}<div class="info">We've received your changes.  Thanks for letting us know!</div>{% endif %}
+<p>We'd love to share this moment with you.</p>
+<p>Also, it's fairly important for us to know if you're coming or not, so we can go planning the party.
+Please let us know as soon as you have something decided.  You will be able to change your mind up to
+a couple of weeks before the event.</p>
+<form action="" method="POST">
+<p>    <input type="radio" name="confirm" {% if all %}checked{% endif %} value="yes" id="confirm_yes"/>
+<label for="confirm_yes">Yes, {% if multiple %}we're all coming{% else %}I'm coming{% endif %}.</label></p>
+<p>    <input type="radio" name="confirm" {% if none %}checked{% endif %} value="no" id="confirm_no"/>
+<label for="confirm_no">No, {% if multiple %}we're{% else %}I'm{% endif %} not coming.</label></p>
+{% if multiple %}
+<p>    <input type="radio" name="confirm" {% if some %}checked{% endif %} value="complicated" id="confirm_complicated"/>
+<label for="confirm_complicated">It's complicated (we're not all coming, but at least one is).</label></p>
+<div id="details"><p>Select those that <b>are</b> coming:</p>
+{% for guest in guests %}
+<p>    <input type="checkbox" name="confirm_{{ guest.id }}" {% if guest.is_coming %}checked{% endif %} /> {{ guest.nick }}</p>
+{% endfor %}
+</div>
+{% endif %}
+<input type="submit" value="Send confirmation" />
+</form>
+<br><br>
+
+<h3>Dressing code:</h3>
+<p>We'd like everyone to be dressed according to the formality of the event. Sneakers and denim jeans are <u>not</u> considered formal.
+</p>
+<p>Women can obviously wear skirts be it as part of a dress or on its own as long as it has an acceptable length. Mini-skirts you can wear any other weened. 
+</p>
+<p>Thanks!</p>
+
+{% endif %}
+
+{% endblock %}

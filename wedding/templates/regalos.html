@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if spanish %}
+<h1>Hacer un regalo</h1>
+
+<p>
+A continuaci&oacute;n les pasamos las opciones por si quieren hacernos un regalito.
+</p>
+
+<ol class="regalos">
+<li><p>Pusimos una lista en Tiendas Vesta donde pueden ver las opciones de productos.
+</p>
+
+<p>Pueden ir a cualquiera de los locales de Tiendas Vesta:</p>
+<pre class="tarjeta">
+Tiendas Vesta
+Dinosaurio Mall, C&oacute;rdoba:
+Rodr&iacute;guez del Busto 4086. B° Alto Verde. Tel.: (54+351) 526 1540
+Av. Fuerza Aérea Arg. 1700. B° San Francisco. Tel.: (54+351) 526 1565 
+</pre>
+
+<p>O realizar consultas o compras en su sitio web (bastante nuevo e incompleto lamentablemente):</p>
+
+<pre class="tarjeta">
+URL: <a href="http://www.vestanovios.com.ar/">http://www.vestanovios.com.ar/</a>
+Nº de lista: 3252
+</pre>
+</li>
+<li>
+<p>También nos pueden ayudar con la Luna de Miel; para eso pueden acercarse a la empresa de 
+Turismo que nos arregla el viaje. Si sobra plata, ésta nos es devuelta en efectivo a nosotros
+directamente por la agencia de viajes.
+</p>
+<pre class="tarjeta">
+<big>Transatl&aacute;ntica</big>, viajes y turismo
+25 de Mayo 130, tel: (0351) 5690060/63
+Nuevocentro Shopping Loc 1131, tel: (0351) 4892000
+C&oacute;rdoba (Capital)
+</pre>
+<p>Los datos que le tienen que pasar son los siguientes:</p>
+<pre class="tarjeta">
+N&ordm; de Referencia: 171548
+Vendedora: Camila
+</pre>
+<p>Si no pueden acercarse a alguno de los locales, pueden hacer un dep&oacute;sito. Para eso
+llamen por tel&eacute;fono a la empresa de viaje asi le pasan los datos de la cuenta. Le van a 
+pedir el n&uacute;mero de referencia.
+</p>
+
+</li>
+</ol>
+
+{% else %}
+
+<h1>Make a gift</h1>
+
+<p>
+If you are reading this page in english means you are probably far away. The best gift you can give us is to <a href="/en/rsvp">come to our wedding</a>.
+</p>
+
+<p>In any case, if you really want to send us a gift being so far away <a href="/en/mensajes">let us know and we'll figure something out</a>.</p>
+
+{% endif %}
+
+{% for p in prezzies %}
+<div class="regalo">
+<div class="fotito">
+<img src="{{p.fotitourl}}" width="100" height="100"/>
+</div>
+<div class="encabezado"><h3><a href="http://www.garbarino.com/productos/producto.php?codigo={{p.garbid}}" target="_new">{{p.title}}</a></h3></div>
+<div class="body"><h3>${{p.price}}</h3></div>
+<div class="button"><form target="new" action="http://www.garbarino.com/listas/compra_pedido.php" method="get">
+<input type="hidden" name="codigo" value="{{p.garbid}}" />
+<input type="hidden" name="num_lista" value="113373" />
+<input type="hidden" name="producto" value="{{p.title|upper}}" />
+<input type="hidden" name="precio" value="{{p.price}}" />
+<input type="submit" value="{%if spanish %}Regalar{% else %}Gift!{%endif%}"/>
+</form></div>
+</div>
+{% endfor %}
+
+{% endblock %}
+

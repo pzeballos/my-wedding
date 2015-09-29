@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if spanish %}
+<h1>&iexcl;Bienvenido!</h1>
+
+{% if pays %}
+<div class="error">
+Al final el valor de la tarjeta va a ser de <b>$ {{ how_much }}</b>
+{% if dinner %}
+   por persona mayor a 13 años (<a href="/es/mensajes">consultarnos</a> para el caso de los menores).  
+{% else %}
+   después de la 1 de la mañana (diríamos "después de 12" pero nos casamos tarde así que es después de 1).
+{% endif %}
+
+Podés ver distintas formas de acercarnos la plata <a href="/es/pago"/>acá</a>. Gracias!</div>
+{% endif %}
+
+<p>&iexcl;Gracias por su visita!</p>
+{% if invited_to_party %}
+{% if sent_rsvp %}
+<p>Si vienen al casamiento, asegúrense de leer los
+<a href="/es/general">datos generales</a> del evento y <a href="/es_mapa">cómo llegar</a>.
+</p>
+{% if dinner %}
+<p>
+Cuando puedan tómense un minuto para <a href="/es/menu">personalizar su menú</a> y
+<a href="/es/sitting">elegir compañeros de mesa</a>.
+</p><p>
+{% endif %}
+Finalmente, si tienen curiosidad pueden ver <a href="/es/fotos">fotos del salón</a>.
+{% else %}
+
+<p>Lo que más necesitamos es que nos confirmen si vienen o no.</p>
+<p>Pueden confirmar su asistencia haciendo click en "Confirmar asistencia" a la
+izquierda.</p>
+<p>Luego de confirmar todavía pueden cambiar de parecer y
+modificar su confirmación. Tienen tiempo hasta el <strong>1º de Septiembre</strong>: así que por favor confirmen lo que sean sus planes por el momento.</p>
+
+<p>En la barra de la izquierda también encontrarán todas las otras
+cosas que pueden hacer con el sitio.
+</p>
+{% endif %}
+{% else %}
+<p>En este espacio podrán conocer un poco más sobre nuestra boda, y compartir más
+de cerca el momento.</p>
+<p>Desde la barra de la izquierda podrán acceder a toda la información disponible
+en el sitio web.</p>
+{% endif %}
+
+<p>Iremos agregando información a medida que se vayan definiendo más detalles,
+así que recuerden revisar el sitio cada tanto.</p>
+
+{% if has_extras %}
+<div class="error">
+Lamentablemente no podemos ni invitar ni pagar por todos quienes nos hubiese gustado. Esto implica que tal vez quieras venir con alguien más que no está invitado. Hablá con nosotros al respecto o dejanos un mensaje con una forma de contactarnos con vos y vamos a intentar corregirlo.
+</div>
+<br style="clear:both"/>
+{% endif %}
+
+{% else %}
+
+<h1>Welcome!</h1>
+<p>Thanks for your visit!
+{% if invited_to_party %}
+{% if sent_rsvp %}
+<p>Great, you've already confirmed if you're coming or not.</p>
+<p>If you are coming, be sure you know all
+<a href="/en/general">important information</a> for the event and
+<a href="/en_mapa">how to get to it</a>.
+</p>
+
+{% if dinner %}
+<p>
+When you have a minute, be sure to <a href="/en/menu">check out the menu</a> or
+<a href="/en/sitting">chose table partners</a>.
+</p>
+{% endif %}
+
+<p>
+Finally, if you're curious you can see some <a href="/en/fotos">photos</a> of the reception place.
+
+{% else %}
+
+<p>What we need the most is for you to confirm if you're coming or not.</p>
+<p>You can confirm your presence by clicking on "Confirm your presence"
+in the left sidebar.<p>
+
+<p>After confirming your presence you can still change your mind and modify
+your confirmation, until a couple of weeks before the wedding itself; so please
+let us know what your plans are so far.</p>
+
+<p>In the left sidebar you can also find a link to everything else you can
+do on this site.
+</p>
+{% endif %}
+{% else %}
+<p>Here you'll be able to find out more about our wedding, and share this moment
+more closely.</p>
+<p>From the left sidebar you can access all the information available on our
+website.</p>
+{% endif %}
+
+<p>We'll add more information when we have more details defined, so
+remember to check back on this page each now and then.</p>
+
+{% endif %}
+
+{% endblock %}
+

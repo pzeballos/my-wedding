@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Pol Y Toote</title>
+    <link href="/static/style.css" rel="stylesheet" type="text/css" media="screen" />
+    <script type="text/javascript" src="/static/js/jquery-1.3.1.min.js"></script>
+<style>
+body { background: #7CB79C url(/static/images/404.png) bottom right no-repeat; }
+</style>
+    <script type="text/javascript">
+    //<![CDATA[
+    $(document).ready(function() {
+        function setLayout() {
+            if ($(window).width() > 1150) {
+                $('body').addClass('wide');
+            }
+            else {
+                $('body').removeClass('wide');
+            }
+        }
+        $(window).resize(setLayout);
+        setLayout();
+    });
+    //]]>
+    </script>
+</head>
+<body class="wide">
+<div id="page">
+    <div id="topleftcorner"></div>
+    <div id="name-and-slogan"><span><h1>Vale &amp; Achuni</h1></span></div>
+    <div id="sidebar-left">
+    </div>
+    <div id="main">
+        <div id="nametag">{{ nametag }}</div>
+        <div id="content" style="width:500px">
+<h1>Oops, that didn't work.</h1>
+<p> I have no idea how you got here, but this isn't the page you were looking for.</p>
+<p>Ooh! Look, <a href="/en/index">a link</a>!</p>
+<h1>Ups, eso no anduvo.</h1>
+<div style="height:150px">
+<p> No tengo idea cómo llegaste acá, pero esta no es la página que andabas buscando.</p>
+<p>Eh! Mirá, <a href="/es/index">un link</a>!</p>
+</div>
+        </div>
+    </div>
+    <div id="footer">
+      Paula {% if invited_to_party %} ( (351) 153 017910) {% endif %} {% if spanish %}y{% else %}and {%endif%} Mat&iacute;as {% if invited_to_party %} ((351) 156 422930) {%endif%}<br>
+      {% if invited_to_party %} Tel: (0351) 425 6640<br>{% endif %}
+      Copyright 2010
+    </div>
+</div>
+<div id="bottomleftcorner"></div>
+</body>
+</html>

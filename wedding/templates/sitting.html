@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+
+{% block extraheaders %}
+
+    <script type="text/javascript" src="/static/js/jquery.tokeninput.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/jquery.tokeninput.css" />
+
+    <script type="text/javascript">
+     $(document).ready(function(){
+
+{% if multiple %}
+        $("#code_affinity").tokenInput("/{{lang}}/codeinput/{{ code_id }}", {{code_selected|safe}},
+        {
+            hintText: "{% if spanish %}Escribí parte del nombre{% else %}Type in somebody's name{%endif%}",
+            noResultsText: "{% if spanish %}No se encontraron resultados{% else %}No results{% endif %}",
+            searchingText: "{% if spanish %}Buscando{% else %}Searching{% endif %}...",
+            dupText: "Esa persona ya está en la lista"
+        });
+{% endif %}
+{% for g in guests %}
+        $("#affinity{{ g.id }}").tokenInput("/{{lang}}/guestinput/{{g.id}}", {{ g.selected|safe }}, {
+            hintText: "{% if spanish %}Escribí parte del nombre{% else %}Type in somebody's name{%endif%}",
+            noResultsText: "{% if spanish %}No se encontraron resultados{% else %}No results{% endif %}",
+            searchingText: "{% if spanish %}Buscando{% else %}Searching{% endif %}...",
+            dupText: "Esa persona ya está en la lista"
+        });
+{% endfor %}
+
+        function updateForm() {
+            var n = $(":radio:checked").attr('value');
+            if (n == 'yes') {
+                $("div#yes_select").show();
+                $("div#no_select").hide();
+            }
+            else {
+                $("div#no_select").show();
+                $("div#yes_select").hide();
+            }
+        }
+        $(":radio").click(updateForm);
+        updateForm();
+     });
+    </script>
+{% endblock %}
+
+{% block content %}
+
+{% if spanish %}
+<h1>&iquest;Con quién me siento?</h1>
+{% if saved %}<div class="info">Buenísimo.  Lo tendremos en cuenta.</div>{% endif %}
+
+<p>Podés elegir de entre la lista de invitados, con quién te gustaría sentarte.  Intentaremos acomodar los gustos de cada uno lo mejor posible.
+Tené en cuenta que las mesas son de a ocho o nueve personas.</p>
+
+{% if not sent_rsvp %}<div class="error">Todavía no han <a href="/es/rsvp">confirmado si vienen o no</a>.
+   Por favor hagan eso antes de elegir con quiénes se sientan.</div>{% else %}
+{% if some_missing %}<div class="warning">Parece que al menos uno de los que aparecen en la tarjeta no viene a la fiesta. Si pensaba venir, antes de poder elegir con quién se sienta tiene que <a href="/es/rsvp">avisarnos acá</a>.</div>{% endif %}
+
+<form action="" method="POST">
+{% if multiple %}
+<fieldset class="menubox">
+<p>    <input type="radio" name="keep_together" {% if keep_together %}checked{% endif %} value="yes" id="keep_together_yes" />
+<label for="keep_together_yes">Nos queremos sentar en la misma mesa.</label></p>
+<p>    <input type="radio" name="keep_together" {% if not keep_together %}checked{% endif %} value="no" id="keep_together_no" />
+<label for="keep_together_no">No hace falta que estemos en la misma mesa.</label></p>
+</fieldset>
+<div id="yes_select">
+<fieldset class="menubox">
+<p> &iquest;Con quién más se quieren sentar?</p>
+<div class="fitted">
+<input type="text" name="code_affinity" id="code_affinity" />
+</div>
+</fieldset>
+</div>
+<div id="no_select">
+<fieldset class="menubox">
+<p>  Elijan con quién preferiría sentarse cada uno:</p>
+{% else %}
+<fieldset class="menubox">
+<p>&iquest;Con quién más te querés sentar?</p>
+{% endif %}
+<p>
+{% for g in guests %}
+<p>{{ g.nick }}:</p>
+<div class="fitted">
+<input type="text" name="affinity{{ g.id }}" id="affinity{{ g.id }}" />
+</div>
+{% endfor %}
+</fieldset>
+{% if multiple %}
+</div>
+{% endif %}
+<div class="fitted">
+<input type="submit" value="Estas son nuestras preferencias" />
+</div>
+</form>
+{% endif %}
+<p>Podés volver a la <a href="/es/index">página de inicio</a></p>
+
+{% else %}
+
+<h1>Choose table partners</h1>
+{% if saved %}<div class="info">Great, thanks.  We'll keep your preferences in mind.</div>{% endif %}
+<p>You can choose among those invited to the party whom you'd like to sit with.  We'll try to accomodate everybody's preferences the best we can.
+Keep in mind that it's going to be eight or nine people per table.</p>
+{% if not sent_rsvp %}<div class="error">You haven't yet <a href="/en/rsvp">confirmed if you're coming or not</a>.
+   Please do that before choosing who you'd like to sit with.</div>{% else %}
+{% if some_missing %}<div class="warning">It seems that at least one of those on the invitation is not coming to the party.  If you are planning on coming to the party in the end, please <a href="/en/rsvp">confirm you are coming</a> before choosing who you'd like to sit with.</div>{% endif %}
+<form action="" method="POST">
+{% if multiple %}
+<fieldset class="menubox">
+<p>    <input type="radio" name="keep_together" {% if keep_together %}checked{% endif %} value="yes" id="keep_together_yes" />
+<label for="keep_together_yes">We'd like to sit all together at the same table.</label></p>
+<p>    <input type="radio" name="keep_together" {% if not keep_together %}checked{% endif %} value="no" id="keep_together_no" />
+<label for="keep_together_no">We don't need to sit all at the same table.</label></p>
+</fieldset>
+<div id="yes_select">
+<fieldset class="menubox">
+<p>  Who else do you want to sit with?</p>
+<div class="fitted">
+<input type="text" name="code_affinity" id="code_affinity" />
+</div>
+</fieldset>
+</div>
+<div id="no_select">
+<fieldset class="menubox">
+<p>  Choose who you'd each like to sit with:</p>
+{% else %}
+<fieldset class="menubox">
+<p>Who else do you want to sit with?</p>
+{% endif %}
+<p>
+{% for g in guests %}
+<p>{{ g.nick }}:</p>
+<div class="fitted">
+<input type="text" name="affinity{{ g.id }}" id="affinity{{ g.id }}" />
+</div>
+{% endfor %}
+</fieldset>
+{% if multiple %}
+</div>
+{% endif %}
+<div class="fitted">
+<input type="submit" value="These are our preferences" />
+</div>
+</form>
+{% endif %}
+
+{% endif %}
+
+{% endblock %}
+

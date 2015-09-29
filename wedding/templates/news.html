@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if spanish %}
+<h1>Novedades</h1>
+
+{% else %}
+
+<h1>News</h1>
+
+{% endif %}
+
+{% for n in news %}
+<div class="novedad">
+<div class="timestamp">{{n.datestr}}</div>
+<h2>{{n.title}}</h2>
+<div class="body">{{n.text|safe}}</div>
+</div>
+{% endfor %}
+
+{% endblock %}
+
